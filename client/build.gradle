@@ -1,7 +1,7 @@
 apply plugin: 'kotlin'
-apply plugin: 'kotlinx-serialization'
 apply from: magnoliaPlugin
 
 dependencies {
-  testImplementation project(':subproject')
+  // Simplification - in the real project, http4s is a transitive dependency, not a direct dependency
+  testImplementation deps.http4s_circe
 }

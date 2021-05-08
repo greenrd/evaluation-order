@@ -1,6 +1,0 @@
-//apply from: magnoliaPlugin
-
-dependencies {
-  // Simplification - in the real project, http4s is a transitive dependency, not a direct dependency
-  implementation deps.http4s_circe
-}

@@ -1,39 +1,8 @@
+//apply from: scalaExt
 apply plugin: 'java-library'
-
-def magnoliaVersion = '0.10.0'
 
 configurations.testCompileClasspath {
   resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-    if (details.requested.group == 'org.scala-lang' && details.requested.name == 'scala-library' && details.requested.version != project.versions.scala_v) {
-      details.useVersion project.versions.scala_v
-      details.because 'this version is required by the Kotlin compiler'
-    }
-    if (details.requested.group == 'org.typelevel' && details.requested.name == 'cats-core_2.12' && details.requested.version != project.versions.cats_v) {
-      details.useVersion project.versions.cats_v
-      details.because 'newer versions depend on a newer version of scala-library'
-    }
-  }
-}
-
-configurations.runtimeClasspath {
-  resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-    if (details.requested.group == 'org.scala-lang' && details.requested.name == 'scala-library' && details.requested.version != project.versions.scala_v) {
-      details.useVersion project.versions.scala_v
-      details.because 'this version is required by the Kotlin compiler'
-    }
-    if (details.requested.group == 'org.typelevel' && details.requested.name == 'cats-core_2.12' && details.requested.version != project.versions.cats_v) {
-      details.useVersion project.versions.cats_v
-      details.because 'newer versions depend on a newer version of scala-library'
-    }
-  }
-}
-
-configurations.testRuntimeClasspath {
-  resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-    if (details.requested.group == 'org.scala-lang' && details.requested.name == 'scala-library' && details.requested.version != project.versions.scala_v) {
-      details.useVersion project.versions.scala_v
-      details.because 'this version is required by the Kotlin compiler'
-    }
     if (details.requested.group == 'org.typelevel' && details.requested.name == 'cats-core_2.12' && details.requested.version != project.versions.cats_v) {
       details.useVersion project.versions.cats_v
       details.because 'newer versions depend on a newer version of scala-library'
