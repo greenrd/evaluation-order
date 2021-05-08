@@ -1,0 +1,30 @@
+apply plugin: 'scala'
+
+ext {
+  scala_version = "2.12"
+  scala_patch_version = ".10"
+
+  versions = [
+    scala_v      : scala_version + scala_patch_version,
+    cats_core_v  : '1.4.0',
+    http4s_v     : '0.21.8'
+  ]
+
+  deps = [
+    http4s_circe : scaladep("org.http4s", "http4s-circe", versions.http4s_v)
+  ]
+}
+
+String scaladep(String g, String a, String v) {
+  return "${g}:${a}_${scala_version}:${v}"
+}
+
+dependencies {
+  implementation 'org.scala-lang:scala-library:' + versions.scala_v
+}
+
+task printAll {
+  doLast {
+    println("Hello world")
+  }
+}
